@@ -46,7 +46,7 @@ struct scalesAnsView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
                                     .foregroundColor(viewModel.pentatonic ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
                                     .transition(.scale)
                                 scaleButtons.init(name: "Pentatonic", active: viewModel.pentatonic)
                                     .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
@@ -103,7 +103,7 @@ struct scalesAnsView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 20)
                                     .foregroundColor(viewModel.minorHarm ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 70, maxHeight: 80, alignment: .center)
+                                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 70, maxHeight: 80, alignment: .center)
                                     .transition(.scale)
                                 scaleButtons.init(name: "Harmonic \nMinor", active: viewModel.minorHarm)
                                     .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .center)

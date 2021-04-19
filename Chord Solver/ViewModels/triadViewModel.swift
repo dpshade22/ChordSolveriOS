@@ -152,15 +152,11 @@ class triadBuildViewModel: ObservableObject {
     }
     
     func augSpic() -> String {
-
-        if quality()[2] == "m3" {
-            return triadBuild(root: root, botInt: quality()[0], midInt: quality()[1], topInt: quality()[2]).findAug3()
-        }
-        else if quality()[2] == "M2" {
-            return triadBuild(root: root, botInt: quality()[0], midInt: quality()[1], topInt: quality()[2]).find2nd()
-
-        }
         return triadBuild(root: root, botInt: quality()[0], midInt: quality()[1], topInt: quality()[2]).findAug3()
+    }
+    
+    func augSpic2() -> String {
+        return triadBuild(root: root, botInt: quality()[0], midInt: quality()[1], topInt: quality()[2]).findAug2nd()
     }
     
     func triadThird() -> String {

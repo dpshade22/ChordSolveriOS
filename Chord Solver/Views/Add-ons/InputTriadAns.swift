@@ -181,7 +181,7 @@ struct InputTriadAns: View {
                         .padding(10)
                     
                 }
-                else if viewModel.frA6 || viewModel.gerA6 {
+                else if viewModel.gerA6 {
                     Text(viewModel.find6th())
                         .font(.title)
                         .bold()
@@ -195,6 +195,32 @@ struct InputTriadAns: View {
                         .padding(10)
 
                     Text(viewModel.augSpic())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+                    
+                    Text(viewModel.find4th())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+                }
+                
+                else if viewModel.frA6 {
+                    Text(viewModel.find6th())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+
+                    Text(viewModel.root)
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+
+                    Text(viewModel.augSpic2())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
