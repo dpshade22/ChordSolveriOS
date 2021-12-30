@@ -15,6 +15,21 @@ struct scalesAnsView: View {
     @State var offset = CGSize.zero
     @State var root: String = ""
     @State var triad: Bool = true
+    
+    let notesArr: [String] = [
+        "A###","B#", "C", "Dbb",
+        "B##", "C#", "Db", "Ebbb",
+        "B###", "C##", "D", "Ebb", "Fbbb",
+        "C###", "D#", "Eb", "Fbb",
+        "D##", "E", "Fb", "Gbbb",
+        "E#", "F", "Gbb",
+        "E##", "F#", "Gb", "Abbb",
+        "E###", "F##", "G", "Abb",
+        "F###", "G#", "Ab", "Bbbb",
+        "G##", "A", "Bbb", "Cbbb",
+        "G###", "A#", "Bb", "Cbb",
+        "A##", "B", "Cb", "Dbbb"
+    ]
 
     var body: some View {
         VStack {
@@ -34,118 +49,169 @@ struct scalesAnsView: View {
             HStack {
                 VStack {
                         HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.major ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Major", active: viewModel.major)
-                            }.ignoresSafeArea(edges: .horizontal)
-                            .padding(.top)
-
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.pentatonic ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Pentatonic", active: viewModel.pentatonic)
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
-                            }.ignoresSafeArea(edges: .horizontal)
-                            .padding(.top)
-                            
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.octatonic ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Octatonic", active: viewModel.octatonic)
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
-                            }.ignoresSafeArea(edges: .horizontal)
-                            .padding(.top)
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.dorian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 70, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Dorian", active: viewModel.dorian)
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.major ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 90, maxWidth: 90, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Major", active: viewModel.major)
+                                }.ignoresSafeArea(edges: .horizontal)
+                                .padding(.top)
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.pentatonic ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 110, maxWidth: 120, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Pentatonic", active: viewModel.pentatonic)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
+                                }.ignoresSafeArea(edges: .horizontal)
+                                .padding(.top)
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.octatonic ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 100, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Octatonic", active: viewModel.octatonic)
+                                        .frame(minWidth: 100, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                }.ignoresSafeArea(edges: .horizontal)
+                                .padding(.top)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.dorian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 90, maxWidth: 90, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Dorian", active: viewModel.dorian)
+                                }
+                                .padding(.top)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.phrygian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 110, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Phyrigian", active: viewModel.phrygian)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
+                                }
+                                .padding(.top)
                             }
-                            .padding(.top)
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.phrygian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 70, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Phyrigian", active: viewModel.phrygian).frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.lydian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 120, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Lydian", active: viewModel.lydian)
+                                }
+                                .padding(.top)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.mixo ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 110, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Mixolydian", active: viewModel.mixo)
+                                }
+                                .padding(.top)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.locrian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Locrian", active: viewModel.locrian)
+                                }
+                                .padding(.top)
                             }
-                            .padding(.top)
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.lydian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 70, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Lydian", active: viewModel.lydian)
-                            }
-                            .padding(.top)
                         }
-                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 20))
-
-
                         HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.minorNat ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Natural \nMinor", active: viewModel.minorNat)
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.minorNat ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Natural\nMinor", active: viewModel.minorNat)
+                                        .multilineTextAlignment(.center)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
+                                }
+                            
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.minorHarm ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 110, maxWidth: .infinity, minHeight: 70, maxHeight: 70, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Harmonic\nMinor", active: viewModel.minorHarm)
+                                        .multilineTextAlignment(.center)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .center)
+                                }
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.minorMel ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 100, maxWidth: .infinity, minHeight: 60, maxHeight: 70, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Melodic\nMinor", active: viewModel.minorMel)
+                                        .multilineTextAlignment(.center)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
+                                }
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.wholeTone ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 90, maxWidth: 90, minHeight: 50, maxHeight: 70, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Whole\nTone", active: viewModel.wholeTone)
+                                        .multilineTextAlignment(.center)
+                                        .frame(minWidth: 100, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
+                                }
+                                .padding(.horizontal, -5)
                             }
                             
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.minorHarm ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 100, maxWidth: .infinity, minHeight: 70, maxHeight: 80, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Harmonic \nMinor", active: viewModel.minorHarm)
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .center)
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.dorB2 ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 110, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Phrygian ♮6", active: viewModel.dorB2)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .center)
+                                }
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.lydianAug ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 120, maxWidth: .infinity, minHeight: 70, maxHeight: 70, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Lydian\nAugmented", active: viewModel.lydianAug)
+                                        .multilineTextAlignment(.center)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .center)
+                                }
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.lydDom ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 110, maxWidth: .infinity, minHeight: 70, maxHeight: 70, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Lydian\nDominant", active: viewModel.lydDom)
+                                        .multilineTextAlignment(.center)
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 60, alignment: .center)
+                                }
+                                
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundColor(viewModel.supLoc ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
+                                        .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                        .transition(.scale)
+                                    scaleButtons.init(name: "Altered", active: viewModel.supLoc)
+                                }
                             }
                             
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.minorMel ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Melodic \nMinor", active: viewModel.minorMel)
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 60, maxHeight: 80, alignment: .center)
-                            }
-                            
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.wholeTone ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Whole \nTone", active: viewModel.wholeTone)
-                                    .frame(minWidth: 90, maxWidth: .infinity, minHeight: 50, maxHeight: 70, alignment: .center)
-                            }
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.mixo ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 70, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Mixolydian", active: viewModel.mixo)
-                            }
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(viewModel.locrian ? Color(#colorLiteral(red: 0.4013041258, green: 0.4645072818, blue: 0.7669017911, alpha: 1)) : Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
-                                    .frame(minWidth: 70, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                    .transition(.scale)
-                                scaleButtons.init(name: "Locrian", active: viewModel.locrian)
-                            }
-                            
-                        }.padding(EdgeInsets(top: -15, leading: 15, bottom: 0, trailing: 20))
+                        }
+                        .padding(EdgeInsets(top: -10, leading: 0, bottom: 20, trailing: 0))
+
                 }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                
             }.frame(height: 155, alignment: .center)
         }
-        
+
         Spacer()
         
         VStack(alignment: .leading){
@@ -154,7 +220,7 @@ struct scalesAnsView: View {
                     if viewModel.pentatonic {
                         VStack {
                             HStack {
-                                Text(viewModel.root)
+                                Text(viewModel.returnRoot())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
@@ -185,7 +251,7 @@ struct scalesAnsView: View {
                                     .foregroundColor(Color(.white))
                                     .padding(10)
                                 
-                                Text(viewModel.root)
+                                Text(viewModel.returnRoot())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
@@ -196,7 +262,7 @@ struct scalesAnsView: View {
                     if viewModel.wholeTone {
                         VStack {
                             HStack {
-                                Text(viewModel.root)
+                                Text(viewModel.returnRoot())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
@@ -234,7 +300,7 @@ struct scalesAnsView: View {
                                     .bold()
                                     .foregroundColor(Color(.white))
                                     .padding(10)
-                                Text(viewModel.root)
+                                Text(viewModel.returnRoot())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
@@ -245,7 +311,7 @@ struct scalesAnsView: View {
                     if viewModel.octatonic {
                         VStack {
                             HStack {
-                                Text(viewModel.root)
+                                Text(viewModel.returnRoot())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
@@ -262,14 +328,14 @@ struct scalesAnsView: View {
                                     .bold()
                                     .foregroundColor(Color(.white))
                                     .padding(10)
-                                
+                            }
+                            HStack {
                                 Text(viewModel.four())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
                                     .padding(10)
-                            }
-                            HStack {
+                                
                                 Text(viewModel.octFive())
                                     .font(.title)
                                     .bold()
@@ -281,16 +347,24 @@ struct scalesAnsView: View {
                                     .bold()
                                     .foregroundColor(Color(.white))
                                     .padding(10)
+                            }
+                            HStack {
                                 Text(viewModel.octSev())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
                                     .padding(10)
-                                Text(viewModel.root)
+                                Text(viewModel.octEight())
                                     .font(.title)
                                     .bold()
                                     .foregroundColor(Color(.white))
                                     .padding(10)
+                                Text(viewModel.returnRoot())
+                                    .font(.title)
+                                    .bold()
+                                    .foregroundColor(Color(.white))
+                                    .padding(10)
+                                
                             }
                         }
                     }
@@ -298,7 +372,7 @@ struct scalesAnsView: View {
                 else {
                     VStack {
                         HStack {
-                            Text(viewModel.root)
+                            Text(viewModel.returnRoot())
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(Color(.white))
@@ -342,7 +416,7 @@ struct scalesAnsView: View {
                                 .bold()
                                 .foregroundColor(Color(.white))
                                 .padding(10)
-                            Text(viewModel.root)
+                            Text(viewModel.returnRoot())
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(Color(.white))
@@ -352,7 +426,7 @@ struct scalesAnsView: View {
                 }
             }
         }.padding()
-        .frame(minWidth: 0, idealWidth: 100, maxWidth: 428, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
+        .frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
         .animation(.easeInOut)
 
     }

@@ -31,7 +31,7 @@ struct InputChordSolveView: View {
             }
         }
         VStack{
-            Text("Temporary")
+            Text(viewModel.returnThird())
                 .font(.title)
                 .bold()
                 .foregroundColor(Color(.white))

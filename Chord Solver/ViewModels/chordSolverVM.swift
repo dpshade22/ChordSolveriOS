@@ -48,6 +48,10 @@ class chordSolverVM: ObservableObject {
         return inputToVars()[0]
     }
     
+    func returnThird() -> String {
+        return inputToVars()[1]
+    }
+    
     /*
 
     func triadToInts() -> Array<String> {

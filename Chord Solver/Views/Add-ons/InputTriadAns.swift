@@ -17,6 +17,21 @@ struct InputTriadAns: View {
     @State var offset = CGSize.zero
     @State var root: String = ""
     @State var triad: Bool = true
+    
+    let notes: [String: Int] = [
+        "A###": 0,"B#": 0, "C":0, "Dbb": 0,
+        "B##": 1, "C#": 1, "Db": 1, "Ebbb": 1,
+        "B###": 2, "C##": 2, "D": 2, "Ebb": 2, "Fbbb": 2,
+        "C###": 3, "D#": 3, "Eb": 3, "Fbb": 3,
+        "D##": 4, "E": 4, "Fb": 4, "Gbbb":4,
+        "E#": 5, "F": 5, "Gbb": 5,
+        "E##": 6, "F#": 6, "Gb": 6, "Abbb": 6,
+        "E###": 7, "F##": 7, "G": 7, "Abb": 7,
+        "F###": 8, "G#": 8, "Ab": 8, "Bbbb": 8,
+        "G##": 9, "A": 9, "Bbb": 9, "Cbbb": 9,
+        "G###": 10, "A#": 10, "Bb": 10, "Cbb":10,
+        "A##": 11, "B": 11, "Cb": 11, "Dbbb":11
+    ]
 
     var body: some View {
         VStack {
@@ -37,68 +52,78 @@ struct InputTriadAns: View {
             HStack {
                 VStack {
                     HStack {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.major ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "Major", active: viewModel.major)
-                        }.ignoresSafeArea(edges: .horizontal)
-                        .padding(.top)
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.major ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "Major", active: viewModel.major)
+                            }.ignoresSafeArea(edges: .horizontal)
+                            .padding(.top)
 
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.minor ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "Minor", active: viewModel.minor)
-                        }.ignoresSafeArea(edges: .horizontal)
-                        .padding(.top)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.minor ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "Minor", active: viewModel.minor)
+                            }.ignoresSafeArea(edges: .horizontal)
+                            .padding(.top)
 
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.aug ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "+", active: viewModel.aug)
-                        }.ignoresSafeArea(edges: .horizontal)
-                        .padding(.top)
-
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.dim ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "o", active: viewModel.dim)
-                        }.ignoresSafeArea(edges: .horizontal)
-                        .padding(.top)
-                        
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.itA6 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "It+6", active: viewModel.itA6)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.aug ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "+", active: viewModel.aug)
+                            }
+                            .padding(.top)
                         }
-                        .padding(.top)
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.dim ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 60, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "o", active: viewModel.dim)
+                            }
+                            .padding(.top)
+                            
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.itA6 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "It+6", active: viewModel.itA6)
+                            }
+                            .padding(.top)
 
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.frA6 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "Fr+6", active: viewModel.frA6)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.frA6 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "Fr+6", active: viewModel.frA6)
+                            }
+                            .padding(.top)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.gerA6 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 65, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "Ger+6", active: viewModel.gerA6)
+                            }
+                            .padding(.top)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 20)
+                                    .foregroundColor(viewModel.ct7 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                    .frame(minWidth: 65, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                    .transition(.scale)
+                                qualityButton.init(name: "CT°7", active: viewModel.ct7)
+                            }
+                            .padding(.top)
                         }
-                        .padding(.top)
-
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.gerA6 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
-                                .transition(.scale)
-                            qualityButton.init(name: "Ger+6", active: viewModel.gerA6)
-                        }
-                        .padding(.top)
                     }
                     
                     HStack {
@@ -139,15 +164,22 @@ struct InputTriadAns: View {
                         }
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
-                                .foregroundColor(viewModel.sus2 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                .foregroundColor(viewModel.mM7 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
                                 .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                .transition(.scale)
+                            qualityButton.init(name: "mM7", active: viewModel.mM7)
+                        }
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(viewModel.sus2 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
+                                .frame(minWidth: 65, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
                                 .transition(.scale)
                             qualityButton.init(name: "Sus2", active: viewModel.sus2)
                         }
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundColor(viewModel.sus4 ? Color(#colorLiteral(red: 0.9607843137, green: 0.7529411765, blue: 0.7529411765, alpha: 1)) : Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
-                                .frame(minWidth: 60, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
+                                .frame(minWidth: 65, maxWidth: 150, minHeight: 50, maxHeight: 50, alignment: .center)
                                 .transition(.scale)
                             qualityButton.init(name: "Sus4", active: viewModel.sus4)
                         }
@@ -168,7 +200,7 @@ struct InputTriadAns: View {
                         .foregroundColor(Color(.white))
                         .padding(10)
 
-                    Text(viewModel.root)
+                    Text(viewModel.returnRoot())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
@@ -188,7 +220,7 @@ struct InputTriadAns: View {
                         .foregroundColor(Color(.white))
                         .padding(10)
 
-                    Text(viewModel.root)
+                    Text(viewModel.returnRoot())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
@@ -214,7 +246,7 @@ struct InputTriadAns: View {
                         .foregroundColor(Color(.white))
                         .padding(10)
 
-                    Text(viewModel.root)
+                    Text(viewModel.returnRoot())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
@@ -234,7 +266,7 @@ struct InputTriadAns: View {
                 }
                 
                 else if viewModel.sus2 {
-                    Text(viewModel.root)
+                    Text(viewModel.returnRoot())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
@@ -254,7 +286,7 @@ struct InputTriadAns: View {
                 }
                 
                 else if viewModel.sus4 {
-                    Text(viewModel.root)
+                    Text(viewModel.returnRoot())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
@@ -273,9 +305,33 @@ struct InputTriadAns: View {
                         .padding(10)
                 }
                 
-                
+                else if viewModel.ct7 {
+                    Text(viewModel.ct2nd())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+
+                    Text(viewModel.ct4th())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+
+                    Text(viewModel.ct6th())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+                    
+                    Text(viewModel.returnRoot())
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(Color(.white))
+                        .padding(10)
+                }
                 else {
-                    Text(viewModel.root)
+                    Text(viewModel.returnRoot())
                         .font(.title)
                         .bold()
                         .foregroundColor(Color(.white))
@@ -293,7 +349,7 @@ struct InputTriadAns: View {
                         .foregroundColor(Color(.white))
                         .padding(10)
                     
-                    if viewModel.MM7 || viewModel.Mm7 || viewModel.mm7 || viewModel.fd7 || viewModel.hd7 {
+                    if viewModel.MM7 || viewModel.Mm7 || viewModel.mm7 || viewModel.fd7 || viewModel.hd7 || viewModel.mM7 {
                         Text(viewModel.triadSev())
                             .font(.title)
                             .bold()
@@ -303,7 +359,7 @@ struct InputTriadAns: View {
                 }
             }
         }
-        .frame(minWidth: 0, idealWidth: 100, maxWidth: 428, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
+        .frame(minWidth: 0, idealWidth: 100, maxWidth: .infinity, minHeight: 0, idealHeight: 100, maxHeight: .infinity, alignment: .center)
         .animation(.easeInOut)
         
     }

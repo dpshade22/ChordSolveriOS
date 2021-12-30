@@ -22,6 +22,12 @@ class scalesViewModel: ObservableObject {
     @Published var lydian = false
     @Published var mixo = false
     @Published var locrian = false
+    @Published var dorB2 = false
+    @Published var lydianAug = false
+    @Published var lydDom = false
+    @Published var mixoB6 = false
+    @Published var locNat2 = false
+    @Published var supLoc = false
     
     func resetButtons() -> Void {
         major = false
@@ -37,6 +43,12 @@ class scalesViewModel: ObservableObject {
         lydian = false
         mixo = false
         locrian = false
+        dorB2 = false
+        lydianAug = false
+        lydDom = false
+        mixoB6 = false
+        locNat2 = false
+        supLoc = false
     }
     
     func quality() -> Array<String> {
@@ -169,6 +181,66 @@ class scalesViewModel: ObservableObject {
             eight = "P8"
             return [two, three, four, five, six, sev, eight]
         }
+        else if dorB2 {
+            two = "m2"
+            three = "m3"
+            four = "P4"
+            five = "P5"
+            six = "M6"
+            sev = "m7"
+            eight = "P8"
+            return [two, three, four, five, six, sev, eight]
+        }
+        else if lydianAug {
+            two = "M2"
+            three = "M3"
+            four = "Augmented 4th"
+            five = "Augmented 5th"
+            six = "M6"
+            sev = "M7"
+            eight = "P8"
+            return [two, three, four, five, six, sev, eight]
+        }
+        else if lydDom {
+            two = "M2"
+            three = "M3"
+            four = "Augmented 4th"
+            five = "P5"
+            six = "M6"
+            sev = "m7"
+            eight = "P8"
+            return [two, three, four, five, six, sev, eight]
+        }
+        else if mixoB6 {
+            two = "M2"
+            three = "M3"
+            four = "P4"
+            five = "P5"
+            six = "m6"
+            sev = "m7"
+            eight = "P8"
+            return [two, three, four, five, six, sev, eight]
+        }
+        else if locNat2 {
+            two = "M2"
+            three = "m3"
+            four = "P4"
+            five = "Diminished 5th"
+            six = "m6"
+            sev = "m7"
+            eight = "P8"
+            return [two, three, four, five, six, sev, eight]
+        }
+        else if supLoc {
+            two = "m2"
+            three = "m3"
+            four = "Diminished 4th"
+            five = "Diminished 5th"
+            six = "m6"
+            sev = "m7"
+            eight = "P8"
+            return [two, three, four, five, six, sev, eight]
+        }
         return [two, three, four, five, six, sev, eight]
     }
     func two() -> String {
@@ -200,5 +272,32 @@ class scalesViewModel: ObservableObject {
     }
     func octSev() -> String {
         return scalesBuildModel(root: root, two: quality()[0], three: quality()[1], four: quality()[2], five: quality()[3], six: quality()[4], sev: quality()[5], eight: quality()[6], nine: quality()[7]).findOctSev()
+    }
+    func octEight() -> String {
+        return scalesBuildModel(root: root, two: quality()[0], three: quality()[1], four: quality()[2], five: quality()[3], six: quality()[4], sev: quality()[5], eight: quality()[6], nine: quality()[7]).findOctEight()
+    }
+    
+    func returnRoot() -> String {
+        let notesArr: [String] = [
+            "A###","B#", "C", "Dbb",
+            "B##", "C#", "Db", "Ebbb",
+            "B###", "C##", "D", "Ebb", "Fbbb",
+            "C###", "D#", "Eb", "Fbb",
+            "D##", "E", "Fb", "Gbbb",
+            "E#", "F", "Gbb",
+            "E##", "F#", "Gb", "Abbb",
+            "E###", "F##", "G", "Abb",
+            "F###", "G#", "Ab", "Bbbb",
+            "G##", "A", "Bbb", "Cbbb",
+            "G###", "A#", "Bb", "Cbb",
+            "A##", "B", "Cb", "Dbbb"
+        ]
+    
+        if !notesArr.contains(root) {
+            return ""
+        }
+        else {
+            return root
+        }
     }
 }

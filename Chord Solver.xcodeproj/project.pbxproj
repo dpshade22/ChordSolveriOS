@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D24FCCE4269B6DAF00C115BE /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FCCE3269B6DAF00C115BE /* ChordView.swift */; };
+		D24FCCE8269B6DB500C115BE /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FCCE3269B6DAF00C115BE /* ChordView.swift */; };
+		D24FCCE9269B6DB500C115BE /* ChordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24FCCE3269B6DAF00C115BE /* ChordView.swift */; };
 		D283F3C2262CCDF60069AF23 /* Chord_SolverApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F3C1262CCDF60069AF23 /* Chord_SolverApp.swift */; };
 		D283F3C4262CCDF60069AF23 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F3C3262CCDF60069AF23 /* ContentView.swift */; };
 		D283F3C6262CCDF70069AF23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D283F3C5262CCDF70069AF23 /* Assets.xcassets */; };
@@ -60,9 +63,6 @@
 		D283F484262CD06F0069AF23 /* triadInts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F483262CD06F0069AF23 /* triadInts.swift */; };
 		D283F485262CD06F0069AF23 /* triadInts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F483262CD06F0069AF23 /* triadInts.swift */; };
 		D283F486262CD06F0069AF23 /* triadInts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F483262CD06F0069AF23 /* triadInts.swift */; };
-		D283F4A6262CD2CC0069AF23 /* ChordSolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F4A5262CD2CC0069AF23 /* ChordSolverView.swift */; };
-		D283F4A7262CD2CC0069AF23 /* ChordSolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F4A5262CD2CC0069AF23 /* ChordSolverView.swift */; };
-		D283F4A8262CD2CC0069AF23 /* ChordSolverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F4A5262CD2CC0069AF23 /* ChordSolverView.swift */; };
 		D283F4AD262CD2EF0069AF23 /* InputChordSolveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F4AC262CD2EF0069AF23 /* InputChordSolveView.swift */; };
 		D283F4AE262CD2EF0069AF23 /* InputChordSolveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F4AC262CD2EF0069AF23 /* InputChordSolveView.swift */; };
 		D283F4AF262CD2EF0069AF23 /* InputChordSolveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D283F4AC262CD2EF0069AF23 /* InputChordSolveView.swift */; };
@@ -92,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D24FCCE3269B6DAF00C115BE /* ChordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordView.swift; sourceTree = "<group>"; };
 		D283F3BE262CCDF60069AF23 /* Chord Solver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chord Solver.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D283F3C1262CCDF60069AF23 /* Chord_SolverApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord_SolverApp.swift; sourceTree = "<group>"; };
 		D283F3C3262CCDF60069AF23 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,7 +120,6 @@
 		D283F475262CD0450069AF23 /* scalesBuildModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scalesBuildModel.swift; sourceTree = "<group>"; };
 		D283F47C262CD05F0069AF23 /* triadBuildModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = triadBuildModel.swift; sourceTree = "<group>"; };
 		D283F483262CD06F0069AF23 /* triadInts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = triadInts.swift; sourceTree = "<group>"; };
-		D283F4A5262CD2CC0069AF23 /* ChordSolverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordSolverView.swift; sourceTree = "<group>"; };
 		D283F4AC262CD2EF0069AF23 /* InputChordSolveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputChordSolveView.swift; sourceTree = "<group>"; };
 		D283F4B3262CD30D0069AF23 /* chordSolverVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chordSolverVM.swift; sourceTree = "<group>"; };
 		D283F4BA262CD33C0069AF23 /* chordSolverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chordSolverModel.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				D283F3EF262CCE2F0069AF23 /* IntervalView.swift */,
 				D283F3F4262CCE4D0069AF23 /* ScalesView.swift */,
 				D283F3F9262CCE6B0069AF23 /* TriadView.swift */,
-				D283F4A5262CD2CC0069AF23 /* ChordSolverView.swift */,
+				D24FCCE3269B6DAF00C115BE /* ChordView.swift */,
 			);
 			path = "Main Screens";
 			sourceTree = "<group>";
@@ -399,8 +399,8 @@
 				D283F4B4262CD30D0069AF23 /* chordSolverVM.swift in Sources */,
 				D283F44C262CCF340069AF23 /* AnswerViewModel.swift in Sources */,
 				D283F3FF262CCE910069AF23 /* InputAnsView.swift in Sources */,
-				D283F4A6262CD2CC0069AF23 /* ChordSolverView.swift in Sources */,
 				D283F484262CD06F0069AF23 /* triadInts.swift in Sources */,
+				D24FCCE4269B6DAF00C115BE /* ChordView.swift in Sources */,
 				D283F4AD262CD2EF0069AF23 /* InputChordSolveView.swift in Sources */,
 				D283F3C4262CCDF60069AF23 /* ContentView.swift in Sources */,
 				D283F4BB262CD33C0069AF23 /* chordSolverModel.swift in Sources */,
@@ -427,8 +427,8 @@
 				D283F4B5262CD30D0069AF23 /* chordSolverVM.swift in Sources */,
 				D283F44D262CCF340069AF23 /* AnswerViewModel.swift in Sources */,
 				D283F415262CCE9D0069AF23 /* InputAnsView.swift in Sources */,
-				D283F4A7262CD2CC0069AF23 /* ChordSolverView.swift in Sources */,
 				D283F485262CD06F0069AF23 /* triadInts.swift in Sources */,
+				D24FCCE9269B6DB500C115BE /* ChordView.swift in Sources */,
 				D283F4AE262CD2EF0069AF23 /* InputChordSolveView.swift in Sources */,
 				D283F419262CCE9D0069AF23 /* TriadView.swift in Sources */,
 				D283F4BC262CD33C0069AF23 /* chordSolverModel.swift in Sources */,
@@ -455,8 +455,8 @@
 				D283F4B6262CD30D0069AF23 /* chordSolverVM.swift in Sources */,
 				D283F44E262CCF340069AF23 /* AnswerViewModel.swift in Sources */,
 				D283F427262CCE9F0069AF23 /* InputAnsView.swift in Sources */,
-				D283F4A8262CD2CC0069AF23 /* ChordSolverView.swift in Sources */,
 				D283F486262CD06F0069AF23 /* triadInts.swift in Sources */,
+				D24FCCE8269B6DB500C115BE /* ChordView.swift in Sources */,
 				D283F4AF262CD2EF0069AF23 /* InputChordSolveView.swift in Sources */,
 				D283F42B262CCE9F0069AF23 /* TriadView.swift in Sources */,
 				D283F4BD262CD33C0069AF23 /* chordSolverModel.swift in Sources */,
@@ -623,6 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dpstudios.Chord-Solver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -645,6 +646,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dpstudios.Chord-Solver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

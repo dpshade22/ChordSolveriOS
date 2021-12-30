@@ -44,6 +44,10 @@ struct qualityButton: View {
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.Mm7.toggle()
+                    case "mM7":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.mM7.toggle()
                     case "mm7":
                         active.toggle()
                         viewModel.resetButtons()
@@ -76,6 +80,10 @@ struct qualityButton: View {
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.sus4.toggle()
+                    case "CT°7":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.ct7.toggle()
                         
                     default:
                         active.toggle()

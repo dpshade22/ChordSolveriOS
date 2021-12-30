@@ -21,7 +21,6 @@ struct ScalesView: View {
                 VStack(alignment: .center) {
                     scalesAnsView()
                         .frame(maxWidth: 350, maxHeight: 100, alignment: .center)
-                        .ignoresSafeArea(.keyboard)
                     
                     Spacer()
                     
@@ -31,7 +30,7 @@ struct ScalesView: View {
                                 .frame(maxWidth: .infinity, maxHeight: 75)
                                 .foregroundColor(Color(#colorLiteral(red: 0.7215686275, green: 0.7098039216, blue: 1, alpha: 1)))
 
-                                Text("Scale Identifier")
+                                Text("Scales")
                                     .bold()
                                     .foregroundColor(.white)
                                     .font(.title)
@@ -46,7 +45,7 @@ struct ScalesView: View {
                                 .foregroundColor(Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
                             NavigationLink(destination: TriadView(), label: {
 
-                                Text("Chord Identifier")
+                                Text("Chords")
                                     .bold()
                                     .foregroundColor(.white)
                                     .font(.title)
@@ -94,11 +93,12 @@ struct ScalesView: View {
                     
                 }.padding()
                 .edgesIgnoringSafeArea(.bottom)
-                .navigationBarTitle("Chord Solver")
+                .navigationBarTitle("Scale Solver")
             }
     
         }.environmentObject(viewModel)
         .navigationBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

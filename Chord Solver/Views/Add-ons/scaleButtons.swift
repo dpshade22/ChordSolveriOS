@@ -23,15 +23,15 @@ struct scaleButtons: View {
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.major.toggle()
-                    case "Natural \nMinor":
+                    case "Natural\nMinor":
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.minorNat.toggle()
-                    case "Harmonic \nMinor":
+                    case "Harmonic\nMinor":
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.minorHarm.toggle()
-                    case "Melodic \nMinor":
+                    case "Melodic\nMinor":
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.minorMel.toggle()
@@ -39,7 +39,7 @@ struct scaleButtons: View {
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.pentatonic.toggle()
-                    case "Whole \nTone":
+                    case "Whole\nTone":
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.wholeTone.toggle()
@@ -67,6 +67,30 @@ struct scaleButtons: View {
                         active.toggle()
                         viewModel.resetButtons()
                         viewModel.locrian.toggle()
+                    case "Phrygian ♮6":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.dorB2.toggle()
+                    case "Lydian\nAugmented":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.lydianAug.toggle()
+                    case "Lydian\nDominant":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.lydDom.toggle()
+                    case "Mixolydian ♭13":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.mixoB6.toggle()
+                    case "Locrian #2":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.supLoc.toggle()
+                    case "Altered":
+                        active.toggle()
+                        viewModel.resetButtons()
+                        viewModel.supLoc.toggle()
                         
                     default:
                         active.toggle()

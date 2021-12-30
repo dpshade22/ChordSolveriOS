@@ -44,7 +44,7 @@ struct IntervalView: View {
                                     .foregroundColor(Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
                                 NavigationLink(destination: TriadView(), label: {
 
-                                    Text("Chord Identifier")
+                                    Text("Chords")
                                         .bold()
                                         .foregroundColor(.white)
                                         .font(.title)
@@ -97,6 +97,7 @@ struct IntervalView: View {
                     .navigationBarTitle("Interval Solver")
             }
         }.navigationBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

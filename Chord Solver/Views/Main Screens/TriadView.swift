@@ -31,7 +31,7 @@ struct TriadView: View {
                                 .frame(maxWidth: .infinity, maxHeight: 75)
                                 .foregroundColor(Color(#colorLiteral(red: 1, green: 0.4431372549, blue: 0.4431372549, alpha: 1)))
 
-                                Text("Chord Identifier")
+                                Text("Chords")
                                     .bold()
                                     .foregroundColor(.white)
                                     .font(.title)
@@ -99,14 +99,13 @@ struct TriadView: View {
     
         }.environmentObject(viewModel)
         .navigationBarHidden(true)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct TriadView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TriadView()
-                .preferredColorScheme(.light)
             TriadView()
                 .preferredColorScheme(.light)
         }
